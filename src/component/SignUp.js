@@ -1,16 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-function SignUpTiltle(props){
-    return(
-        <h1>{props.titulo} </h1>
-    )
-}
-// formulario 
-function SignUp(props){
+function SignUp(){
+    const [usuario, setUsuario]= useState("")
+    const [contrasena, setContrasena]= useState("")
+    const [confirmarcontrasena, setConfirmarContrasena]= useState("")
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault()
+        console.log('usuario:'+usuario);
+        console.log('contrasena:'+contrasena);
+        console.log('confirmarcontrasena:'+confirmarcontrasena);
+        setUsuario("")
+        setContrasena("")
+        setConfirmarContrasena("")
+    }
+
     return (
         <>
-        <SignUpTiltle titulo={props.titulo}/>
-        <form> </form> 
+        <form onSubmit={handleOnSubmit}> 
+            <div>
+                <input value={usuario} onChange={(e)=> setUsuario(e.target.value)}/>
+                <label> Usuario or correo</label>
+            </div>
+            <div>
+                <input  value={contrasena} onChange={(e)=> setContrasena(e.target.value)}/>
+                <label> Contrasena</label>
+            </div>         
+            
+            <div>
+                <input value={confirmarcontrasena} onChange={(e)=> setConfirmarContrasena(e.target.value)}/>
+                <label> confirmar contrasena</label>
+            </div>
+            <input type="submit" value="ingresar"/>
+        </form>
         </>
     )
 }
