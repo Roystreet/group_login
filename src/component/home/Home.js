@@ -4,16 +4,14 @@ import s from './home.module.css'
 
 export function Home() {
     return (
-        <main className={s.main}>
-            <div className={s.container}>
-                <h1>Hola mundo </h1>
-                <Link to='/login'>
-                    <button className={s.button}>Login</button>
-                </Link>
-                <Link to='/singup'>
-                    <button className={s.button}>Sing Up</button>
-                </Link>
-            </div>
-        </main>
+        <div className={s.container}>
+            <h1>Hola mundo </h1>
+            <Link to='/login'>
+                <button className={s.button}>Login</button>
+            </Link>
+            <Link to="/signup">
+                <button className={s.button}>Sign Up</button>
+            </Link>
+        </div>
     )
 }
