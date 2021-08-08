@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-function SignUp(){
-    const [usuario, setUsuario]= useState("")
-    const [contrasena, setContrasena]= useState("")
-    const [confirmarcontrasena, setConfirmarContrasena]= useState("")
+export function SignUp() {
+    const [usuario, setUsuario] = useState("")
+    const [contrasena, setContrasena] = useState("")
+    const [confirmarcontrasena, setConfirmarContrasena] = useState("")
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
-        console.log('usuario:'+usuario);
-        console.log('contrasena:'+contrasena);
-        console.log('confirmarcontrasena:'+confirmarcontrasena);
+        console.log('usuario:' + usuario);
+        console.log('contrasena:' + contrasena);
+        console.log('confirmarcontrasena:' + confirmarcontrasena);
         setUsuario("")
         setContrasena("")
         setConfirmarContrasena("")
@@ -17,24 +17,22 @@ function SignUp(){
 
     return (
         <>
-        <form onSubmit={handleOnSubmit}> 
-            <div>
-                <input value={usuario} onChange={(e)=> setUsuario(e.target.value)}/>
-                <label> Usuario or correo</label>
-            </div>
-            <div>
-                <input  value={contrasena} onChange={(e)=> setContrasena(e.target.value)}/>
-                <label> Contrasena</label>
-            </div>         
-            
-            <div>
-                <input value={confirmarcontrasena} onChange={(e)=> setConfirmarContrasena(e.target.value)}/>
-                <label> confirmar contrasena</label>
-            </div>
-            <input type="submit" value="ingresar"/>
-        </form>
+            <form onSubmit={handleOnSubmit}>
+                <div>
+                    <input value={usuario} onChange={(e) => setUsuario(e.target.value)} />
+                    <label> Usuario or correo</label>
+                </div>
+                <div>
+                    <input value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
+                    <label> Contrasena</label>
+                </div>
+
+                <div>
+                    <input value={confirmarcontrasena} onChange={(e) => setConfirmarContrasena(e.target.value)} />
+                    <label> confirmar contrasena</label>
+                </div>
+                <input type="submit" value="ingresar" />
+            </form>
         </>
     )
 }
-
-export default SignUp;

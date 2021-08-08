@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 export function Login() {
     const [input, setInput] = useState({ usuario: "", contrasena: "" })
 
-
     const handleOnSubmit = (e) => {
         e.preventDefault()
         console.log('usuario:' + input.usuario);
@@ -29,5 +28,3 @@ export function Login() {
         </>
     )
 }
-
-export default Login;
