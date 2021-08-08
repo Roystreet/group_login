@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { validate } from '../../utils/utils';
 
+const default_values = {
+    email: "",
+    password: ""
+}
+
 export function Login() {
-    const [input, setInput] = useState({
-        email: "",
-        password: ""
-    })
+    const [input, setInput] = useState(default_values)
 
     const [errors, setErrors] = useState({})
 
@@ -22,6 +24,8 @@ export function Login() {
 
     function handleOnSubmit(e) {
         e.preventDefault()
+        console.log(input)
+        setInput(default_values)
     }
 
     return (
