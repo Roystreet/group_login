@@ -6,7 +6,7 @@ export function Home() {
     return (
         <main className={s.main}>
             <div className={s.container}>
-                <h1>Hola</h1>
+                <h1>Hola mundo </h1>
                 <Link to='/login'>
                     <button className={s.button}>Login</button>
                 </Link>
