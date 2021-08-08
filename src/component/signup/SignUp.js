@@ -1,43 +1,67 @@
 import React, { useState } from 'react';
+import { validate } from '../../utils/utils'
+
+const default_values = {
+    email: "",
+    password: "",
+    confirmpass: ""
+}
 
 export function SignUp() {
-    const [usuario, setUsuario] = useState("")
-    const [contrasena, setContrasena] = useState("")
-    const [confirmarcontrasena, setConfirmarContrasena] = useState("")
+    const [input, setInput] = useState(default_values)
+    const [errors, setErrors] = useState({})
+
+    function handleInputChange(e) {
+        setInput({
+            ...input,
+            [e.target.name]: e.target.value
+        });
+        setErrors(validate({
+            ...input,
+            [e.target.name]: e.target.value
+        }));
+    }
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
-        setUsuario("")
-        setContrasena("")
-        setConfirmarContrasena("")
+        console.log(input)
+        setInput(default_values)
     }
 
     return (
-
         <form onSubmit={handleOnSubmit}>
-            <h1>Sign Up</h1>
+            <h1>Sing Up</h1>
             <div>
                 <input
-                    value={usuario}
-                    onChange={(e) => setUsuario(e.target.value)}
+                    type="text"
+                    name="email"
+                    value={input.email}
+                    onChange={handleInputChange}
                 />
-                <label>Usuario or correo</label>
+                <label>Usuario</label>
+                {errors.email && (<p className="danger">{errors.email}</p>)}
             </div>
             <div>
                 <input
-                    value={contrasena}
-                    onChange={(e) => setContrasena(e.target.value)}
+                    type="text"
+                    name="password"
+                    value={input.password}
+                    onChange={handleInputChange}
                 />
-                <label> Contrasena</label>
+                <label>Contrasena</label>
+                {errors.password && (<p className="danger">{errors.password}</p>)}
             </div>
             <div>
                 <input
-                    value={confirmarcontrasena}
-                    onChange={(e) => setConfirmarContrasena(e.target.value)}
+                    type="text"
+                    name="confirmpass"
+                    value={input.confirmpass}
+                    onChange={handleInputChange}
                 />
-                <label>confirmar contrasena</label>
+                <label>Repetir Contrasena</label>
+                {input.password !== input.confirmpass && (<p className="danger">La pass debe ser igual</p>)}
             </div>
-            <button>Registrar</button>
+            <button>Registrarse</button>
         </form>
     )
 }
